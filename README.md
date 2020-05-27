@@ -7,6 +7,8 @@ In such a tight size limit, being able to cram in 7 separate effects, a "script"
 
 The main.c file has a simple runloop that sets up a draw surface with TIGR. TIGR supports Mac and Windows, but the repo currently only has a n xcode project. You can probably compile this for windows by just stuffing all the files in a VS project and hitting build.
 
+[mainloop.c](cocoamemories/mainloop.c) contains the somewhat untouched assembly logic of the demo, converted into using fake CPU registers in C. Straight C has been used to implement the instructions where it seemed easy, and special functions mimicing the rest are in place for the rest.
+
 All the original x86 assembly code with a really awesome writeup on each effect can be found at http://www.sizecoding.org/wiki/Memories
 
 This is considered a "fun" project so feel free to do whatever you like with any of the code. It's not 100% working yet either - there's a weird byte sign patch in place to get the X coordinate in properly, probably due to some error in the mul16 implementation.
