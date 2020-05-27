@@ -11,6 +11,8 @@ The [main.m](cocoamemories/main.m) file has a simple runloop that sets up a draw
 
 All the original x86 assembly code with a really awesome writeup on each effect can be found at http://www.sizecoding.org/wiki/Memories
 
+There's also a nice breakdown of some of the effects (with really cool visualizations too) at https://github.com/cesarmiquel/memories-256b-msdos-intro
+
 This is considered a "fun" project so feel free to do whatever you like with any of the code. It's not 100% working yet either - there's a weird byte sign patch in place to get the X coordinate in properly, probably due to some error in the mul16 implementation.
 
 ## Not yet implemented
