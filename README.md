@@ -13,3 +13,16 @@ This is considered a "fun" project so feel free to do whatever you like with any
 
 ## Screenshots
 
+![fx1](images/cmem1.png)
+
+![fx2](images/cmem2.png)
+
+![fx3](images/cmem3.png)
+
+![fx4](images/cmem4.png)
+
+![fx5](images/cmem5.png)
+
+![fx6](images/cmem6.png)
+
+![fx7](images/cmem7.png)
