@@ -13,13 +13,11 @@ All the original x86 assembly code with a really awesome writeup on each effect 
 
 There's also a nice breakdown of some of the effects (with really cool visualizations too) at https://github.com/cesarmiquel/memories-256b-msdos-intro
 
-This is considered a "fun" project so feel free to do whatever you like with any of the code. It's not 100% working yet either - there's a weird byte sign patch in place to get the X coordinate in properly, probably due to some error in the mul16 implementation.
+This is considered a "fun" project so feel free to do whatever you like with any of the code.
 
 ## Not yet implemented
 
 * Music playback
-* Fix mul16 sign weirdness
-* Proper timing instead of relying a modern machine being able to run everything in no time
 
 ## Screenshots
 
