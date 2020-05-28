@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841B8CA0248065600026AD08 /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = 841B8C9F248065600026AD08 /* timing.c */; };
 		844819E9247230B600549FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844819E8247230B600549FD2 /* Assets.xcassets */; };
 		844819EF247230B600549FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844819EE247230B600549FD2 /* main.m */; };
 		844819F4247230CF00549FD2 /* tigr.c in Sources */ = {isa = PBXBuildFile; fileRef = 844819D82472307F00549FD2 /* tigr.c */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841B8C9E248065600026AD08 /* timing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
+		841B8C9F248065600026AD08 /* timing.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
 		844819D82472307F00549FD2 /* tigr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tigr.c; sourceTree = "<group>"; };
 		844819D92472307F00549FD2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		844819DA2472307F00549FD2 /* tigr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tigr.h; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				844819F52472351B00549FD2 /* mainloop.h */,
 				844819F62472351B00549FD2 /* mainloop.c */,
 				84D8259C247EB6F700B075F8 /* vgapalette.h */,
+				841B8C9E248065600026AD08 /* timing.h */,
+				841B8C9F248065600026AD08 /* timing.c */,
 			);
 			path = cocoamemories;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844819EF247230B600549FD2 /* main.m in Sources */,
+				841B8CA0248065600026AD08 /* timing.c in Sources */,
 				844819F4247230CF00549FD2 /* tigr.c in Sources */,
 				844819F72472351B00549FD2 /* mainloop.c in Sources */,
 			);

@@ -14,22 +14,29 @@
 
 #include "vgapalette.h"
 
+#include "timing.h"
 #include "mainloop.h"
 
+//#define FRAME_EXACT
+
 int main(int argc, const char * argv[]) {
+    init_clock_frequency();
+    
     Tigr *screen = tigrWindow(320, 200, "Memories", 0);
     tigrClear(screen, tigrRGB(0x00, 0x00, 0x00));
-    unsigned char *vga = malloc(320 * 200);
-    memset(vga, 0, 320 * 200);
+    unsigned char *vga = malloc(320 * 300);
+    unsigned char *padded_vga = vga + 320 * 50;
+    memset(vga, 0, 320 * 300);
     struct timespec ts;
     ts.tv_sec = 0;
     ts.tv_nsec = 1000000 / 30;
     unsigned short bp = 0x13;
+    float started = time_now();
     while (!tigrClosed(screen))
     {
         // convert vga to tigr
         TPixel *buf = screen->pix;
-        unsigned char *v = vga;
+        unsigned char *v = padded_vga;
         for(int p=0;p<320*200;p++) {
             unsigned char c = *v;
             (*buf).b=vga_palette[c*3+2];
@@ -37,9 +44,20 @@ int main(int argc, const char * argv[]) {
             (*buf).r=vga_palette[c*3];
             ++v; ++buf;
         }
-        advance(vga, bp++);
+        advance(padded_vga, bp++);
         tigrUpdate(screen);
-        nanosleep(&ts, NULL);
+        // frame exact or timing exact?
+#ifdef FRAME_EXACT
+        float t = time_now() - started;
+        if(t < 0.0333f) {
+            ts.tv_nsec = t * 1000.0f;
+            nanosleep(&ts, NULL);
+        }
+        started = time_now();
+#else
+        float t = time_now() - started;
+        bp = (int)(t * 35.0f);
+#endif
     }
     free(vga);
     tigrFree(screen);

@@ -91,7 +91,7 @@ void imul16_dx(uint16_t val) {
 
 // mul16 this is needed for the rrola trick
 void mul16(uint16_t val) {
-    uint32_t res = (uint16_t)r.ax * (uint16_t)val;
+    uint32_t res = (uint32_t)r.ax * (uint32_t)val;
     r.ax = res & 0xffff;
     res >>= 16;
     r.dx = res & 0xffff;
@@ -306,13 +306,11 @@ void (*tb[])(void)= {fx2,fx1,fx0,fx3,fx4,fx5,fx6,dummy,stop};
 void advance(unsigned char *a000, unsigned short bp) {
     // inject our fake time pointer
     r.bp = bp;
+    r.di = 0;
     do {
         r.ax = 0xcccd;
         // mul di                    ; transform screen pointer to X, Y
         mul16(r.di);
-
-        // not sure why this is needed but most effects seem to need this
-        r.dl -= 128;
 
         // add al,ah                ; use transformation garbage as
         r.al += r.ah;
@@ -331,7 +329,7 @@ void advance(unsigned char *a000, unsigned short bp) {
         // call bx                    ; call the effect
         (*tb[r.bl])();
         // stosb                    ; write the return value and advance
-        a000[r.di++] = r.al;
+        a000[r.di++ - 160] = r.al;
         // inc di                    ; triple interlace trick for after
         // inc di                    ; effect and smoothing the animation
         r.di+=2;
