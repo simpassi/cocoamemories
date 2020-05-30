@@ -69,7 +69,7 @@ void div8(uint8_t val) {
 
 // signed multiplications emulated
 void imul8(uint8_t val) {
-    r.ax = ((int16_t)((int8_t)(r.al)) * (int8_t)val);
+    r.ax = (int16_t)((int8_t)(r.al) * (int8_t)val);
 }
 
 void imul16(uint16_t val) {
@@ -218,14 +218,14 @@ void fx4() {
 
 // raycast bent tunnel
 void fx5() {
-    // for fake push stack
-    uint16_t tmpdx;
+    // fake push stack
+    uint16_t tmpdx = r.dx;
 
     // mov cl,-9        ; start with depth 9 (moves backwards)
-    r.cx = -9;
+    r.cl = 0xf7;
 fx5L:
+    r.dx = tmpdx;
     // push dx            ; save DX, destroyed inside the loop
-    tmpdx = r.dx;
     // mov al,dh    ; Get Y into AL
     r.al = r.dh;
     // sub al,100    ; Centering Y has to be done "manually".
@@ -247,11 +247,8 @@ fx5L:
     // test al,-8    ; check if the wall is hit
     // pop dx            ; restore DX
     // loopz fx5L        ; repeat until "hit" or "iter=max"
-    r.dx = tmpdx;
-    if((int8_t)r.al > -9 && r.cl > 0) {
-        r.cl--;
-        goto fx5L;
-    }
+    r.cx--;
+    if((r.al & 0xf8)==0 && r.cx > 0) goto fx5L;
     // sub cx,bp        ; offset depth by time
     r.cx -= r.bp;
     // xor al,cl        ; XOR pattern for texture
