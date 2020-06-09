@@ -16,8 +16,10 @@
 
 #include "timing.h"
 #include "mainloop.h"
+#include "cmemories.h"
 
 //#define FRAME_EXACT
+//#define C_IMPLEMENTATION
 
 int main(int argc, const char * argv[]) {
     init_clock_frequency();
@@ -44,7 +46,11 @@ int main(int argc, const char * argv[]) {
             (*buf).r=vga_palette[c*3];
             ++v; ++buf;
         }
+#ifdef C_IMPLEMENTATION
+        c_advance(padded_vga, bp++);
+#else
         advance(padded_vga, bp++);
+#endif
         tigrUpdate(screen);
         // frame exact or timing exact?
 #ifdef FRAME_EXACT

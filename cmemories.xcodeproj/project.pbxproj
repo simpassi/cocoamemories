@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84048E68248F19C100F4CABF /* x86.c in Sources */ = {isa = PBXBuildFile; fileRef = 84048E67248F19C100F4CABF /* x86.c */; };
+		84048E69248F1D3B00F4CABF /* cmemories.c in Sources */ = {isa = PBXBuildFile; fileRef = 84B6D61F24859998002DF56C /* cmemories.c */; };
+		84048E6A248F312400F4CABF /* mainloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 844819F62472351B00549FD2 /* mainloop.c */; };
 		841B8CA0248065600026AD08 /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = 841B8C9F248065600026AD08 /* timing.c */; };
 		844819E9247230B600549FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844819E8247230B600549FD2 /* Assets.xcassets */; };
 		844819EF247230B600549FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844819EE247230B600549FD2 /* main.m */; };
 		844819F4247230CF00549FD2 /* tigr.c in Sources */ = {isa = PBXBuildFile; fileRef = 844819D82472307F00549FD2 /* tigr.c */; };
-		844819F72472351B00549FD2 /* mainloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 844819F62472351B00549FD2 /* mainloop.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84048E66248F19C100F4CABF /* x86.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = x86.h; sourceTree = "<group>"; };
+		84048E67248F19C100F4CABF /* x86.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = x86.c; sourceTree = "<group>"; };
 		841B8C9E248065600026AD08 /* timing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timing.h; sourceTree = "<group>"; };
 		841B8C9F248065600026AD08 /* timing.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
 		844819D82472307F00549FD2 /* tigr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tigr.c; sourceTree = "<group>"; };
@@ -27,6 +31,8 @@
 		844819F0247230B600549FD2 /* cocoamemories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cocoamemories.entitlements; sourceTree = "<group>"; };
 		844819F52472351B00549FD2 /* mainloop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainloop.h; sourceTree = "<group>"; };
 		844819F62472351B00549FD2 /* mainloop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mainloop.c; sourceTree = "<group>"; };
+		84B6D61E24859998002DF56C /* cmemories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmemories.h; sourceTree = "<group>"; };
+		84B6D61F24859998002DF56C /* cmemories.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cmemories.c; sourceTree = "<group>"; };
 		84D8259C247EB6F700B075F8 /* vgapalette.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vgapalette.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +86,10 @@
 				84D8259C247EB6F700B075F8 /* vgapalette.h */,
 				841B8C9E248065600026AD08 /* timing.h */,
 				841B8C9F248065600026AD08 /* timing.c */,
+				84B6D61E24859998002DF56C /* cmemories.h */,
+				84B6D61F24859998002DF56C /* cmemories.c */,
+				84048E66248F19C100F4CABF /* x86.h */,
+				84048E67248F19C100F4CABF /* x86.c */,
 			);
 			path = cocoamemories;
 			sourceTree = "<group>";
@@ -152,10 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84048E68248F19C100F4CABF /* x86.c in Sources */,
 				844819EF247230B600549FD2 /* main.m in Sources */,
+				84048E6A248F312400F4CABF /* mainloop.c in Sources */,
+				84048E69248F1D3B00F4CABF /* cmemories.c in Sources */,
 				841B8CA0248065600026AD08 /* timing.c in Sources */,
 				844819F4247230CF00549FD2 /* tigr.c in Sources */,
-				844819F72472351B00549FD2 /* mainloop.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
