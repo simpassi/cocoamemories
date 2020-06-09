@@ -24,7 +24,8 @@
 int main(int argc, const char * argv[]) {
     init_clock_frequency();
     
-    Tigr *screen = tigrWindow(320, 200, "Memories", 0);
+    Tigr *screen = tigrWindow(320, 200, "Memories", TIGR_RETINA);
+    bool double_pixels = screen->w == 640;
     tigrClear(screen, tigrRGB(0x00, 0x00, 0x00));
     unsigned char *vga = malloc(320 * 300);
     unsigned char *padded_vga = vga + 320 * 50;
@@ -39,12 +40,40 @@ int main(int argc, const char * argv[]) {
         // convert vga to tigr
         TPixel *buf = screen->pix;
         unsigned char *v = padded_vga;
-        for(int p=0;p<320*200;p++) {
-            unsigned char c = *v;
-            (*buf).b=vga_palette[c*3+2];
-            (*buf).g=vga_palette[c*3+1];
-            (*buf).r=vga_palette[c*3];
-            ++v; ++buf;
+        if(double_pixels) {
+            for(int p=0;p<320*200;p++) {
+                unsigned char c = *v;
+                unsigned char b = vga_palette[c*3+2];
+                unsigned char g = vga_palette[c*3+1];
+                unsigned char r = vga_palette[c*3];
+                (*buf).b=b;
+                (*buf).g=g;
+                (*buf).r=r;
+                TPixel *buf2 = buf+640;
+                (*buf2).b=b;
+                (*buf2).g=g;
+                (*buf2).r=r;
+                ++buf;buf2 = buf+640;
+                (*buf).b=b;
+                (*buf).g=g;
+                (*buf).r=r;
+                (*buf2).b=b;
+                (*buf2).g=g;
+                (*buf2).r=r;
+                ++buf;
+                ++v;
+                if(p%320==319) {
+                    buf += 640;
+                }
+            }
+        } else {
+            for(int p=0;p<320*200;p++) {
+                unsigned char c = *v;
+                (*buf).b=vga_palette[c*3+2];
+                (*buf).g=vga_palette[c*3+1];
+                (*buf).r=vga_palette[c*3];
+                ++v; ++buf;
+            }
         }
 #ifdef C_IMPLEMENTATION
         c_advance(padded_vga, bp++);
